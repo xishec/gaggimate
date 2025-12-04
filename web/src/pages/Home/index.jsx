@@ -47,7 +47,7 @@ export function Home() {
     },
     [apiService],
   );
-  const mode = machine.value.status.mode;
+  const mode = 1
 
   return (
     <>

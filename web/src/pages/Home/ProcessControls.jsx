@@ -576,14 +576,18 @@ const ProcessControls = props => {
 
         {/* Common controls for all modes that need them */}
         {(mode === 1 || mode === 3 || (mode === 4 && showGrindTab && isGrindAvailable)) && (
-          <div className='flex flex-col items-center gap-4 space-y-4'>
-            <button className='btn btn-circle btn-lg btn-primary' onClick={handleButtonClick}>
-              <FontAwesomeIcon icon={getButtonIcon()} className='text-2xl' />
+          <div className='flex w-full max-w-md items-center justify-between gap-4 px-2'>
+            {/* Spacer for centering when flush button is shown */}
+            {brew && !active && !finished && <div className='w-16' />}
+
+            <button className='btn btn-primary rounded-full' onClick={handleButtonClick}>
+              <FontAwesomeIcon icon={getButtonIcon()} />
+              <span>{active ? 'Stop' : finished ? 'Done' : 'Start'}</span>
             </button>
 
             {brew && !active && !finished && (
               <button
-                className='btn text-base-content/60 hover:text-base-content rounded-full text-sm transition-colors duration-200'
+                className='btn btn-ghost text-base-content/60 hover:text-base-content w-16 rounded-full text-sm transition-colors duration-200'
                 onClick={startFlush}
                 title='Click to flush water'
               >
